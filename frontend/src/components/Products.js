@@ -35,6 +35,40 @@ const ProductList = () => {
         }
     }
 
+    const copyProduct = async (id) => {
+
+        let product = await fetch(`http://localhost:5000/product/${id}`, {
+            headers : {
+                authorization : `bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        });
+        product = await product.json();
+        console.warn('product to be copied', product);
+        let name = product.name;
+        let price = product.price;
+        let category = product.category;
+        let company = product.company;
+
+        let userId = JSON.parse(localStorage.getItem('user'))._id;
+        let result = await fetch('http://localhost:5000/addProduct',{
+            method: 'post',
+            body: JSON.stringify({name, price, category, userId, company}),
+            headers : {
+                'Content-Type' : 'application/json',
+                authorization : `bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        })
+        result = await result.json();
+        console.warn(result);
+
+        if(result.__v === 0) {
+            alert('Product Copied Successfully');
+            getProducts();
+        } else {
+            alert('Error occurred while copy, please contact support.');
+        }
+    }
+
     const handleSearch = async (event) => {
         const searchTerm = event.target.value;
         if(searchTerm.length >= 2) { 
@@ -78,8 +112,9 @@ const ProductList = () => {
                         <li>{item.category}</li>
                         <li>{item.company}</li>
                         <li>
-                            <img alt='Delete Product' className='deleteProduct' onClick={() => deleteProduct(item._id)} src='https://www.shutterstock.com/image-vector/delete-icon-no-sign-close-600nw-1077922715.jpg'/>
-                            <Link className='updateLink' to={`/update/${item._id}`}><img alt='Update Product' className='updateProduct' src='https://cdn.pixabay.com/photo/2021/08/23/22/40/refresh-6568981_640.png'/></Link>
+                            <img alt='Delete Product' className='deleteProduct' onClick={() => deleteProduct(item._id)} src='/images/delete-icon.webp'/>
+                            <Link className='updateLink' to={`/update/${item._id}`}><img alt='Update Product' className='updateProduct' src='/images/update-icon.webp'/></Link>
+                            <img alt='Copy Product' className='updateProduct' onClick={() => copyProduct(item._id)} src='/images/copy-icon.png'/>
                         </li>
                     </ul>
                 )

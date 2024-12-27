@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
 
@@ -9,7 +9,7 @@ const AddProduct = () => {
     const [company, setCompany] = useState('');
     const [error,setError] = useState(false);
     const [message, setMessage] = useState('');
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [msgCss, setMsgCss] = useState('');
 
     const addProduct = async () => {
@@ -30,9 +30,9 @@ const AddProduct = () => {
         })
         result = await result.json();
         console.warn(result);
-        if(result.__v == 0) {
+        if(result.__v === 0) {
             setMsgCss('successMessage');
-            setMessage('Product Added Successfully');
+            setMessage(`Product Added Successfully`);
             // setTimeout(() => {navigate('/')}, 5000);
         } else {
             setMsgCss('errorMessage');
@@ -51,7 +51,7 @@ const AddProduct = () => {
 
     return (
         <div className='product'>
-            {message !='' && <span className='successMessage'>Product Added Successfully</span>}
+            {message !== '' && <span className={msgCss}>{message}</span>}
             <h1>Add Product</h1>
             <input value={name} onChange={(e) => setName(e.target.value)} className='inputBox' type='text' placeholder='Enter Product Name' />
             {error && !name && <span className='invalidInput'>Enter valid Name</span>}

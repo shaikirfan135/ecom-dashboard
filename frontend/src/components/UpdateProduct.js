@@ -66,7 +66,7 @@ const UpdateProduct = () => {
 
     return (
         <div className='product'>
-            {message !='' && <span className={msgCss}>{message}</span>}
+            {message !== '' && <span className={msgCss}>{message}</span>}
             <h1>Update Product</h1>
             <input value={name} onChange={(e) => setName(e.target.value)} className='inputBox' type='text' placeholder='Enter Product Name' />
             {error && !name && <span className='invalidInput'>Enter valid Name</span>}

@@ -19,6 +19,10 @@
   text-align: right;
 }
 
+.logoutLink {
+  margin-left: 803px;
+}
+
 .logo {
   width: 75px;
   float: left;
@@ -47,10 +51,11 @@
 
 .footer {
   bottom: 0;
-  position: absolute;
+  position: relative;
   width: 100%;
   text-align: center;
   background-color: skyblue;
+  padding: 10px;
 }
 
 .inputBox {
