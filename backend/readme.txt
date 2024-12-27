@@ -58,4 +58,7 @@ PS D:\workspace\nodejs\ecom-dashboard>
 
 after creation of index.js run nodemon
 
+https://www.youtube.com/watch?v=fO7DjUAzLb8&list=PL8p2I9GklV456iofeMKReMTvWLr7Ki9At&index=87&ab_channel=CodeStepByStep
+video #87 JWT Token Authentication
+
 ========================== end : sample log for above ==========================
