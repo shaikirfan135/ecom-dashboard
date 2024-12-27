@@ -11,3 +11,7 @@ npm i web-vitals --save-dev
 
 video 59 - header and footer
 video 60 - signup page layout
+
+
+https://www.youtube.com/watch?v=fO7DjUAzLb8&list=PL8p2I9GklV456iofeMKReMTvWLr7Ki9At&index=87&ab_channel=CodeStepByStep
+video #87 JWT Token Authentication
